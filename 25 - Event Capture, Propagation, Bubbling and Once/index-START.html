@@ -41,9 +41,24 @@
   }
 </style>
 
-<button></button>
+<button class="btn"></button>
 <script>
+  const divs = document.querySelectorAll('div')
+  const button = document.querySelector('button');
 
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation();
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false,
+    once: true
+  }));
+
+  button.addEventListener('click', logText, {
+    once: true // This is useful for shopping cart checkouts
+  });
 </script>
 </body>
 </html>
